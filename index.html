@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT AZAM AUTO MOBIL BOGOR & PT BOGOR GREEN PROPERTY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a56db;
+            --secondary-color: #0e9f6e;
+            --accent-color: #3f83f8;
+            --text-color: #1f2937;
+            --light-bg: #f9fafb;
+            --border-color: #e5e7eb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: rgba(26, 86, 219, 0.95);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #ffcc00;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        /* Hero Slider */
+        .hero-slider {
+            margin-top: 80px;
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-content {
+            max-width: 600px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slide-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .slide-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #0d8b60;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .slider-dot.active {
+            background: white;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Video Section */
+        .video-section {
+            padding: 4rem 0;
+            background: linear-gradient(to right, #f0f9ff, #e1f5fe);
+            text-align: center;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-placeholder {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        .video-placeholder iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Company Sections */
+        .company-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin: 3rem 0;
+            padding: 2rem;
+            overflow: hidden;
+        }
+        
+        .company-header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .company-name {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+        
+        .company-address {
+            color: #6b7280;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .sub-section-title {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .business-activities {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .activity-item {
+            background-color: var(--light-bg);
+            padding: 0.8rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .owner-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .info-item {
+            margin-bottom: 0.8rem;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .capital {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 1rem 0;
+        }
+        
+        .statement {
+            background-color: #ebf5ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: #ffcc00;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #ffcc00;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero-slider {
+                height: 400px;
+                margin-top: 120px;
+            }
+            
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+            
+            .business-activities, .owner-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <span>BOGOR COMPANIES</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="home">
+        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');">
+            <div class="slide-content">
+                <h2>PT AZAM AUTO MOBIL BOGOR</h2>
+                <p>Solusi terpercaya untuk segala kebutuhan otomotif Anda</p>
+                <a href="#azam-auto" class="btn">Selengkapnya</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');">
+            <div class="slide-content">
+                <h2>PT BOGOR GREEN PROPERTY</h2>
+                <p>Membangun properti berkualitas dengan konsep ramah lingkungan</p>
+                <a href="#bogor-property" class="btn">Selengkapnya</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1503387762353-8c6637f89308?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');">
+            <div class="slide-content">
+                <h2>Layanan Profesional</h2>
+                <p>Didukung oleh tim ahli dan berpengalaman di bidangnya</p>
+                <a href="#services" class="btn">Lihat Layanan</a>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services container" id="services">
+        <div class="section-title">
+            <h2>Layanan Kami</h2>
+            <p>Kami menyediakan berbagai layanan profesional untuk memenuhi kebutuhan Anda</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1563720223880-4d93eef1f1c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Layanan Otomotif">
+                </div>
+                <div class="service-content">
+                    <h3>Layanan Otomotif</h3>
+                    <p>Penjualan mobil baru dan bekas, reparasi, dan perlengkapan kendaraan bermotor.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Properti Hijau">
+                </div>
+                <div class="service-content">
+                    <h3>Properti Hijau</h3>
+                    <p>Pengembangan properti ramah lingkungan dengan konsep modern dan berkelanjutan.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Konstruksi">
+                </div>
+                <div class="service-content">
+                    <h3>Jasa Konstruksi</h3>
+                    <p>Layanan konstruksi bangunan hunian dan komersial dengan kualitas terjamin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Profil Perusahaan</h2>
+                <p>Kenali lebih dekat perusahaan kami melalui video profil berikut</p>
+            </div>
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <!-- Replace with actual video embed code -->
+                    <iframe src="https://www.youtube.com/embed/6ac3selmPxU" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PT AZAM AUTO MOBIL BOGOR -->
+    <section class="company-section container" id="azam-auto">
+        <div class="company-header">
+            <div>
+                <h2 class="company-name">PT AZAM AUTO MOBIL BOGOR</h2>
+                <p class="company-address">Cimahpar Stoneyard Blok D No 15, KOTA BOGOR, Jawa Barat</p>
+            </div>
+        </div>
+
+        <h3 class="sub-section-title">Kegiatan Usaha</h3>
+        <div class="business-activities">
+            <div class="activity-item">Industri Kendaraan Bermotor Roda Empat Atau Lebih</div>
+            <div class="activity-item">Industri Kendaraan Multiguna Pedesaan</div>
+            <div class="activity-item">Industri Karoseri Kendaraan Bermotor Roda Empat Atau Lebih dan Industri Trailer dan Semi Trailer</div>
+            <div class="activity-item">Industri Suku Cadang dan Aksesori Kendaraan Bermotor Roda Empat Atau Lebih</div>
+            <div class="activity-item">Industri Sepeda Motor Roda Dua Dan Tiga</div>
+            <div class="activity-item">Industri Komponen Dan Perlengkapan Sepeda Motor Roda Dua Dan Tiga</div>
+            <div class="activity-item">Industri Alat Angkutan Lainnya YTDL</div>
+            <div class="activity-item">Perdagangan Besar Mobil Baru</div>
+            <div class="activity-item">Perdagangan Besar Mobil Bekas</div>
+            <div class="activity-item">Perdagangan Eceran Mobil Baru</div>
+            <div class="activity-item">Perdagangan Eceran Mobil Bekas</div>
+            <div class="activity-item">Reparasi Mobil</div>
+            <div class="activity-item">Perdagangan Eceran Bahan Bakar Minyak, Bahan Bakar Gas (BBG), dan Liquefied Petroleum Gas (LPG) di Sarana Pengisian Bahan Bakar Transportasi Darat, Laut, dan Udara</div>
+            <div class="activity-item">Perdagangan Eceran Perlengkapan Pengendara Kendaraan Bermotor</div>
+            <div class="activity-item">Perdagangan Eceran Atas Dasar Balas Jasa (Fee) Atau Kontrak</div>
+            <div class="activity-item">Angkutan bus Antarkota Antarprovinsi (AKAP)</div>
+            <div class="activity-item">Angkutan Bus Perbatasan</div>
+            <div class="activity-item">Angkutan Bus Pariwisata</div>
+            <div class="activity-item">Angkutan Perbatasan Bukan Bus, Dalam Trayek</div>
+            <div class="activity-item">Angkutan Antarkota Dalam Provinsi (AKDP) Bukan Bus, Dalam Trayek</div>
+            <div class="activity-item">Angkutan Perkotaan Bukan Bus, Dalam Trayek</div>
+            <div class="activity-item">Angkutan Perdesaan Bukan Bus, Dalam Trayek</div>
+            <div class="activity-item">Angkutan Darat Khusus Bukan Bus</div>
+            <div class="activity-item">Angkutan Ojek Motor</div>
+            <div class="activity-item">Angkutan Darat Wisata</div>
+            <div class="activity-item">Angkutan Sewa Khusus</div>
+            <div class="activity-item">Angkutan Darat Lainnya untuk Penumpang</div>
+            <div class="activity-item">Angkutan Bermotor untuk Barang Umum</div>
+        </div>
+
+        <div class="capital">Modal Usaha: Rp1.500.000.000,00</div>
+
+        <h3 class="sub-section-title">Data Pemilik Usaha</h3>
+        <div class="owner-info">
+            <div class="info-item"><span class="info-label">Nama Lengkap:</span> Hanung Suryo Panggondo</div>
+            <div class="info-item"><span class="info-label">Tanggal Lahir:</span> 1 Agustus 1993</div>
+            <div class="info-item"><span class="info-label">Alamat Lengkap:</span> Jl Tasmania IV No 2, KOTA BOGOR</div>
+            <div class="info-item"><span class="info-label">Nomor Induk Kependudukan:</span> 3201300108930002</div>
+            <div class="info-item"><span class="info-label">Nomor Pokok Wajib Pajak:</span> 96.330.720.2-404.000</div>
+        </div>
+    </section>
+
+    <!-- PT BOGOR GREEN PROPERTY -->
+    <section class="company-section container" id="bogor-property">
+        <div class="company-header">
+            <div>
+                <h2 class="company-name">PT BOGOR GREEN PROPERTY</h2>
+                <p class="company-address">KP PASIR KAKAPA, BOGOR, Jawa Barat</p>
+            </div>
+        </div>
+
+        <h3 class="sub-section-title">Kegiatan Usaha</h3>
+        <div class="business-activities">
+            <div class="activity-item">Industri Bangunan Pratabrikasi Dari Kayu</div>
+            <div class="activity-item">Industri Barang Dari Kayu, Rotan, Gabus Lainnya YTDL</div>
+            <div class="activity-item">Pengumpulan Air Limbah Berbahaya</div>
+            <div class="activity-item">Konstruksi Gedung Hunian</div>
+            <div class="activity-item">Instalasi Listrik</div>
+            <div class="activity-item">Instalasi Telekomunikasi</div>
+            <div class="activity-item">Instalasi Elektronika</div>
+            <div class="activity-item">Instalasi Saluran Air (Plumbing)</div>
+            <div class="activity-item">Instalasi Pemanas Dan Geotermal</div>
+            <div class="activity-item">Instalasi Minyak Dan Gas</div>
+            <div class="activity-item">Instalasi Pendingin Dan Ventilasi Udara</div>
+            <div class="activity-item">Instalasi Mekanikal</div>
+            <div class="activity-item">Pengerjaan Pemasangan Kaca Dan Alumunium</div>
+            <div class="activity-item">Pengerjaan Lantai, Dinding, Peralatan Saniter Dan Plafon</div>
+            <div class="activity-item">Pengecatan</div>
+            <div class="activity-item">Dekorasi Interior</div>
+            <div class="activity-item">Dekorasi Exterior</div>
+            <div class="activity-item">Penyelesaian Konstruksi Bangunan Lainnya</div>
+            <div class="activity-item">Pemasangan Pondasi Dan Tiang Pancang</div>
+            <div class="activity-item">Pemasangan Rangka dan Atap/Roof Covering</div>
+            <div class="activity-item">Konstruksi Khusus Lainnya Ytdi</div>
+            <div class="activity-item">Perusahaan Pembiayaan Sekunder Perumahan</div>
+            <div class="activity-item">Aktivitas Jasa Keuangan Lainnya Ytdi, Bukan Asuransi dan Dana Pensiun</div>
+            <div class="activity-item">Real Estat Yang Dimiliki Sendiri Atau Disewa</div>
+            <div class="activity-item">Aktivitas Arsitektur</div>
+            <div class="activity-item">Aktivitas Keinsinyuran dan Konsultasi Teknis YBDI</div>
+            <div class="activity-item">Aktivitas Perawatan dan Pemeliharaan Taman</div>
+            <div class="activity-item">Administrasi Pelayanan Pemerintah Bidang Perumahan</div>
+        </div>
+
+        <div class="capital">Modal Usaha: Rp1.500.000.000,00</div>
+
+        <h3 class="sub-section-title">Data Pemilik Usaha</h3>
+        <div class="owner-info">
+            <div class="info-item"><span class="info-label">Nama Lengkap:</span> RIKI SETIAWAN</div>
+            <div class="info-item"><span class="info-label">Tanggal Lahir:</span> 4 April 1995</div>
+            <div class="info-item"><span class="info-label">Alamat Lengkap:</span> KP PASIR KAKAPA, BOGOR</div>
+            <div class="info-item"><span class="info-label">Nomor Induk Kependudukan:</span> 3201040404950006</div>
+            <div class="info-item"><span class="info-label">Nomor Pokok Wajib Pajak:</span> 21.182.476.8-434.000</div>
+        </div>
+
+        <div class="statement">
+            <p>Saya selaku Pendiri bertanggung jawab atas data yang Saya isi dan bersedia untuk menaati peraturan yang berkaitan dengan Perseroan Perorangan dan peraturan terkait lainnya.</p>
+            <p>Surat Pernyataan telah disetujui Pemohon secara elektronik.</p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tentang Kami</h3>
+                    <p>PT AZAM AUTO MOBIL BOGOR dan PT BOGOR GREEN PROPERTY adalah perusahaan terpercaya yang berkomitmen memberikan layanan terbaik kepada pelanggan.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Bogor, Jawa Barat, Indonesia</p>
+                    <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info@bogorcompanies.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#services">Layanan</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Ikuti Kami</h3>
+                    <p>Terhubung dengan kami melalui media sosial</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 PT AZAM AUTO MOBIL BOGOR & PT BOGOR GREEN PROPERTY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hero Slider Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+            
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                currentSlide = (n + slides.length) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+            
+            // Auto slide change
+            setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+            
+            // Dot click events
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a, .btn').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
